@@ -1,0 +1,36 @@
+# 1.4 Remove AD group from SP group
+
+## summary
+
+Verify updates to inherited AD groups within Sharepoint groups are updated in the search collection.
+
+## steps
+
+* create ldap users usr1, usr2
+* create a site collection sc1
+* create a sharepoint group sc1_sg1 on site collection sc1
+* assign usr1 to sc1_sg1
+* create an ldap group lg1
+* assign usr2 to ldap group lg1
+* set site collection sc1 with role assignments:
+
+	assigned to a sharepoint group sc1_sg1
+	assigned to an ldap group lg1
+
+* create a site s1 within sc1 with no unique role assignments
+* create a list l1_sc1 within sc1 with no unique role assignments
+
+crawl sc1
+
+## assertions 1:
+
+verify usr1, usr2 can see every object that you crawled from sc1.
+
+Remove ldap group lg1 from sc1 
+re-crawl sc1 
+
+## assertions2:
+
+verify usr2 cannot see any object that you crawled from sc1.
+
+
