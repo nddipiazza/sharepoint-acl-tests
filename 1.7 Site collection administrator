@@ -1,0 +1,17 @@
+# 1.7 Site collection administrator
+
+## summary
+
+Verify site collection administrators can see everything in a site collection regardless of role assignments.
+
+## steps
+
+* create a user `usr1_7`
+* set `usr1_7` as a site collection administrator.
+* create a site collection `sc1_7`
+* add a site, list, list items with default permissions.
+* crawl `sc1_7`
+
+## assertions
+
+* verify security trimming allows `usr1_7` to see all the search results. 
